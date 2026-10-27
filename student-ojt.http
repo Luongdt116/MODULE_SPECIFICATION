@@ -1,0 +1,46 @@
+@baseUrl = http://localhost:8080
+# Thay bằng UUID nhận được từ response của request đăng ký thành công.
+@studentId = a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11
+
+### 1. Đăng ký hợp lệ - mong đợi 201 Created
+POST {{baseUrl}}/api/v1/students/register
+Content-Type: application/json
+
+{
+  "fullName": "Nguyen Van A",
+  "email": "nguyenvana@gmail.com",
+  "phone": "0901234567",
+  "nationalId": "079123456789",
+  "university": "Đại học Bách Khoa",
+  "major": "Công nghệ Phần mềm"
+}
+
+### 2. Dữ liệu không hợp lệ - mong đợi 400 Bad Request
+POST {{baseUrl}}/api/v1/students/register
+Content-Type: application/json
+
+{
+  "fullName": "Nguyen Van B",
+  "email": "nguyenvanb@gmail.com",
+  "phone": "123",
+  "nationalId": "456",
+  "university": "Đại học KHTN",
+  "major": "IT"
+}
+
+### 3. Gửi lại email/CCCD ở request 1 - mong đợi 409 Conflict
+POST {{baseUrl}}/api/v1/students/register
+Content-Type: application/json
+
+{
+  "fullName": "Nguyen Van A",
+  "email": "nguyenvana@gmail.com",
+  "phone": "0901234567",
+  "nationalId": "079123456789",
+  "university": "Đại học Bách Khoa",
+  "major": "Công nghệ Phần mềm"
+}
+
+### 4. Tra cứu hồ sơ - mong đợi 200 OK
+GET {{baseUrl}}/api/v1/students/{{studentId}}
+Accept: application/json
