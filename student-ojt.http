@@ -1,17 +1,17 @@
-@baseUrl = http://localhost:8080
+@baseUrl = http://localhost:8888/api/v1
 # Thay bằng UUID nhận được từ response của request đăng ký thành công.
-@studentId = a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11
+@studentId = 13633220-07bf-4019-8489-018f1d7a90c7
 
 ### 1. Đăng ký hợp lệ - mong đợi 201 Created
 POST {{baseUrl}}/api/v1/students/register
 Content-Type: application/json
 
 {
-  "fullName": "Nguyen Van A",
-  "email": "nguyenvana@gmail.com",
-  "phone": "0901234567",
-  "nationalId": "079123456789",
-  "university": "Đại học Bách Khoa",
+  "fullName": "Nguyen Van B",
+  "email": "nguyenvanb@gmail.com",
+  "phone": "0901234589",
+  "nationalId": "079673456789",
+  "university": "Đại học XD",
   "major": "Công nghệ Phần mềm"
 }
 
